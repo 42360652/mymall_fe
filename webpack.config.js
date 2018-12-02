@@ -6,10 +6,11 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
 
 
-var getHtmlConfig = function (name) {
+var getHtmlConfig = function (name, title) {
     return {
         template : './src/view/'+ name +'.html',
         filename : 'view/'+ name +'.html',
+        title : title,
         inject: true,
         hash: true,
         chunks: ['common',name]
@@ -19,11 +20,13 @@ var getHtmlConfig = function (name) {
 var config = {
     entry: {
         'common' : ['./src/page/common/index.js'],
-        'index': ['./src/page/index/index.js'],
-        'login': ['./src/page/login/index.js'],
+        'index' : ['./src/page/index/index.js'],
+        'login' : ['./src/page/login/index.js'],
+        'result' : ['./src/page/result/index.js'],
     },
     output: {
         filename: 'js/[name].js',
+        publicPath : '/dist',
         path: path.resolve(__dirname,'dist')
     },
     externals :{
@@ -50,12 +53,23 @@ var config = {
       ]
     },
 
+    resolve : {
+      alias :{
+          node_modules: path.resolve(__dirname,'./node_modules/'),
+          util : path.resolve(__dirname,'./src/util/'),
+          page : path.resolve(__dirname,'./src/page/'),
+          service : path.resolve(__dirname,'./src/service/'),
+          image : path.resolve(__dirname,'./src/image/')
+      }
+    },
+
     plugins: [
         //css单独打包
         new ExtractTextPlugin('css/[name].css'),
         //html模板的处理
-        new HtmlWebpackPlugin(getHtmlConfig('index')),
-        new HtmlWebpackPlugin(getHtmlConfig('login'))
+        new HtmlWebpackPlugin(getHtmlConfig('index','首页')),
+        new HtmlWebpackPlugin(getHtmlConfig('login','用户登录')),
+        new HtmlWebpackPlugin(getHtmlConfig('result','操作结果')),
     ],
 
     //独立通用模块

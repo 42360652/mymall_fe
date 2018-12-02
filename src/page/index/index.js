@@ -1,15 +1,8 @@
-import _ from 'lodash'
+require('page/common/nav/index.js');
+require('page/common/header/index.js');
+var navSide = require('page/common/nav-side/index.js');
+var _mm  = require('util/mm.js');
 
-require('../module.js');
-require('./index.css');
-require('../common/index');
-function component() {
-    let element = document.createElement('div');
-
-    // Lodash, currently included via a script, is required for this line to work
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-    return element;
-}
-
-document.body.appendChild(component());
+navSide.init({
+    name : 'user-center'
+});

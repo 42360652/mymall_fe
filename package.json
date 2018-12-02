@@ -5,10 +5,10 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" : "WEBPACK_ENV=dev webpack-dev-server --inling --port 8088",
-    "dev_win" : "set WEBPACK_ENV=dev && webpack-dev-server --inline --port 8088",
-    "dist" : "WEBPACK_ENV=online webpack -p",
-    "dist_win" : "set WEBPACK_ENV=online && webpack -p"
+    "dev": "WEBPACK_ENV=dev webpack-dev-server --inling --port 8088",
+    "dev_win": "set WEBPACK_ENV=dev && webpack-dev-server --inline --port 8088",
+    "dist": "WEBPACK_ENV=online webpack -p",
+    "dist_win": "set WEBPACK_ENV=online && webpack -p"
   },
   "repository": {
     "type": "git",
@@ -23,15 +23,19 @@
   "devDependencies": {
     "css-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^2.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
     "ejs": "^2.6.1",
+    "font-awesome": "^4.7.0",
+    "hogan": "^1.0.2",
     "lodash": "^4.17.11"
   }
 }
