@@ -39,7 +39,7 @@ var _mm = {
 
     //获取URL参数
     getUrlParam : function(){
-        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');;
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
         var result = window.location.search.substr(1).match(reg);
         return result ? decodeURIComponent(result[2]) : null;
     },
@@ -74,7 +74,7 @@ var _mm = {
     },
     //登录处理
     doLogin : function () {
-        window.location.herf = './login.html?redirect=' + encodeURIComponent(window.location.herf);
+        window.location.herf = './user-login.html?redirect=' + encodeURIComponent(window.location.herf);
     },
     //回主页
     goHome : function () {
