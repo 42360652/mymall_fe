@@ -46,3 +46,4 @@ var nav = {
         });
     }
 };
+module.exports = nav.init();
