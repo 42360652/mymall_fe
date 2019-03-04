@@ -1,7 +1,7 @@
 require('./index.css');
 require('page/common/nav/index.js');
 require('page/common/header/index.js');
-var _util = require('util/util.js');
+var _mm = require('util/mm.js');
 var _order = require('service/order-service.js');
 var navSide = require('page/common/nav-side/index.js');
 var templateIndex = require('./index.string');
@@ -9,7 +9,7 @@ var templateIndex = require('./index.string');
 //page逻辑部分
 var page = {
     data: {
-        orderNo: _util.getUrlParam('orderNo')
+        orderNo: _mm.getUrlParam('orderNo')
     },
     init: function() {
         this.onLoad();
@@ -27,10 +27,10 @@ var page = {
         $(document).on('click', '.order-cancel', function() {
             if (window.confirm('确认要取消该订单吗？')) {
                 _order.cancelOrder(_this.data.orderNo, function(res) {
-                    _util.successTips('该订单取消成功');
+                    _mm.successTips('该订单取消成功');
                     _this.loadOrderDetail();
                 }, function(errMsg) {
-                    _util.errorTips(errMsg);
+                    _mm.errorTips(errMsg);
                 });
             }
         });
@@ -44,7 +44,7 @@ var page = {
         _order.getOrderDetail(this.data.orderNo, function(res) {
             _this.dataFilter(res);
             // 渲染html
-            var orderDetailHtml = _util.renderHtml(templateIndex, res);
+            var orderDetailHtml = _mm.renderHtml(templateIndex, res);
             $content.html(orderDetailHtml);
         }, function(errMsg) {
             $content.html('<p class="err-tip">' + errMsg + '</p>');

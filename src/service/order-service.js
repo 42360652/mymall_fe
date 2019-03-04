@@ -26,6 +26,26 @@ var _order = {
             success: resolve,
             error: reject
         });
+    },
+    getOrderDetail: function(orderNo, resolve, reject) {
+        _mm.request({
+            url: _mm.getServerUrl('/order/detail.do'),
+            data: {
+                orderNo: orderNo
+            },
+            success: resolve,
+            error: reject,
+        });
+    },
+    cancelOrder: function(orderNo, resolve, reject) {
+        _mm.request({
+            url: _mm.getServerUrl('/order/cancel.do'),
+            data: {
+                orderNo: orderNo
+            },
+            success: resolve,
+            error: reject,
+        });
     }
-}
+};
 module.exports = _order;
